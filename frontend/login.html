@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in · Employee Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-body">
+
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <span class="theme-icon-sun">☀</span>
+    <span class="theme-icon-moon">☾</span>
+  </button>
+
+  <div class="login-scene">
+    <div class="login-blob blob-1"></div>
+    <div class="login-blob blob-2"></div>
+    <div class="login-blob blob-3"></div>
+
+    <div class="login-card-wrap">
+      <div class="login-card" id="loginCard">
+        <div class="login-mark">EL</div>
+        <h1 class="login-title">Employee Ledger</h1>
+        <p class="login-sub">Sign in to manage employee records</p>
+
+        <form id="loginForm" class="login-form">
+          <label class="form-label">Username
+            <input type="text" id="loginUser" placeholder="admin" required autocomplete="username" />
+          </label>
+          <label class="form-label">Password
+            <input type="password" id="loginPass" placeholder="••••••••" required autocomplete="current-password" />
+          </label>
+
+          <p class="form-error" id="loginError" hidden>Enter a username and password to continue.</p>
+
+          <button type="submit" class="btn btn-primary login-submit">Sign in</button>
+        </form>
+
+        <p class="login-note">Demo access only — any username &amp; password works.<br/>This screen isn't wired to real authentication yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="theme.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

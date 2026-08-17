@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employee Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">EL</span>
+      <div class="brand-text">
+        <h1>Employee Ledger</h1>
+        <p class="brand-sub">Records for <span id="deptCount">–</span> departments · <span id="empCount">–</span> employees</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon-sun">☀</span>
+        <span class="theme-icon-moon">☾</span>
+      </button>
+      <button id="logoutBtn" class="btn btn-ghost">Sign out</button>
+      <button id="openAddBtn" class="btn btn-primary">+ New Entry</button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <section class="toolbar">
+      <div class="field">
+        <label for="deptFilter">Department</label>
+        <input id="deptFilter" type="text" placeholder="e.g. Engineering" />
+      </div>
+      <div class="field">
+        <label for="minSalary">Min salary</label>
+        <input id="minSalary" type="number" placeholder="0" />
+      </div>
+      <div class="field">
+        <label for="maxSalary">Max salary</label>
+        <input id="maxSalary" type="number" placeholder="No limit" />
+      </div>
+      <button id="searchBtn" class="btn btn-outline">Filter</button>
+      <button id="resetBtn" class="btn btn-ghost">Reset</button>
+      <div class="api-status" id="apiStatus">
+        <span class="dot" id="apiDot"></span>
+        <span id="apiStatusText">Checking API…</span>
+      </div>
+    </section>
+
+    <section class="ledger-wrap tilt-surface" id="ledgerSurface">
+      <div id="emptyState" class="empty-state" hidden>
+        <p class="empty-title">No entries yet</p>
+        <p class="empty-sub">Add your first employee, or check that the backend is running on <code>localhost:8080</code>.</p>
+      </div>
+
+      <div id="errorState" class="error-state" hidden>
+        <p class="error-title">Couldn't reach the API</p>
+        <p class="error-sub" id="errorDetail">Make sure the Spring Boot app is running.</p>
+      </div>
+
+      <table class="ledger" id="ledgerTable" hidden>
+        <thead>
+          <tr>
+            <th class="col-id">ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th class="col-num">Salary</th>
+            <th>Joined</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ledgerBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Slide-over panel for add/edit -->
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="panel" class="panel" hidden>
+    <div class="panel-head">
+      <h2 id="panelTitle">New Entry</h2>
+      <button id="closePanelBtn" class="icon-btn" aria-label="Close">×</button>
+    </div>
+    <form id="employeeForm" class="panel-form">
+      <input type="hidden" id="employeeId" />
+
+      <label class="form-label">Full name
+        <input type="text" id="nameInput" required placeholder="Neha Varma" />
+      </label>
+
+      <label class="form-label">Email
+        <input type="email" id="emailInput" required placeholder="neha@company.com" />
+      </label>
+
+      <label class="form-label">Department
+        <input type="text" id="departmentInput" required placeholder="Engineering" />
+      </label>
+
+      <label class="form-label">Salary (₹ / yr)
+        <input type="number" id="salaryInput" required min="0" step="1000" placeholder="55000" />
+      </label>
+
+      <label class="form-label">Joining date
+        <input type="date" id="joiningDateInput" required />
+      </label>
+
+      <p class="form-error" id="formError" hidden></p>
+
+      <div class="panel-actions">
+        <button type="button" id="cancelBtn" class="btn btn-ghost">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Save entry</button>
+      </div>
+    </form>
+  </aside>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="theme.js"></script>
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
