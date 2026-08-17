@@ -27,7 +27,7 @@ employee-frontend/
 ├── style.css                 # all styling, theme variables, 3D effects
 
 
-## Backend requirement (already set up in this repo)
+## Step 1 - Backend requirement (already set up in this repo)
    CORS is configured in the backend at
    `src/main/java/com/neha/employeemanagement/config/CorsConfig.java`,
    which allows this frontend to call the API.
@@ -58,6 +58,4 @@ Same as before: **+ New Entry**, **Edit**, **Delete**, department/salary filters
 **Dark mode doesn't stick between visits:**
 → Some browsers clear `localStorage` in private/incognito mode by design — this is expected there.
 
-## For your resume / GitHub
-Suggested bullet:
-> Built a JavaScript frontend (vanilla HTML/CSS/JS) for a Spring Boot REST API featuring full CRUD workflows, live filtering, dark/light theming, and a 3D-interactive login screen; connected via Fetch API with inline validation-error handling.
+
