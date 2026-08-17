@@ -25,17 +25,13 @@ employee-frontend/
 ├── theme.js              # dark/light mode toggle, shared by both pages
 ├── auth.js                 # session gate + sign-out (dashboard only)
 ├── style.css                 # all styling, theme variables, 3D effects
-└── CorsConfig.java              # ⚠️ goes into your BACKEND project, not this folder
-```
 
-## Step 1 — Add CORS support to your backend (required, one-time)
-1. Copy `CorsConfig.java` into your backend project at:
-   ```
-   src/main/java/com/neha/employeemanagement/config/CorsConfig.java
-   ```
-   (create the `config` folder if it doesn't exist)
-2. In Eclipse, right-click the project → **Refresh**
-3. Restart the Spring Boot app
+
+## Backend requirement (already set up in this repo)
+   CORS is configured in the backend at
+   `src/main/java/com/neha/employeemanagement/config/CorsConfig.java`,
+   which allows this frontend to call the API.
+
 
 ## Step 2 — Run the backend
 Console should show `Tomcat started on port(s): 8080`.
