@@ -119,6 +119,20 @@ A Spring Boot REST API for managing employee records, built with Spring Boot, Sp
 3. Test the happy path first (valid create → get → update → delete), then test edge cases (invalid email, duplicate email, non-existent ID) to demonstrate the validation and error handling.
 4. Take screenshots of a few requests/responses for your GitHub README — this is what recruiters actually look at.
 
+   ### Example Responses
+
+**Successful Creation (201):**
+![Create Employee](screenshots/01-create-employee-201.png)
+
+**Validation Error (400):**
+![Validation Error](screenshots/02-validation-error-400.png)
+
+**Not Found (404):**
+![Not Found](screenshots/03-not-found-404.png)
+
+**Duplicate Email (409):**
+![Duplicate Email](screenshots/04-duplicate-email-409.png)
+
 ## Project Structure
 ```
 src/main/java/com/neha/employeemanagement/
